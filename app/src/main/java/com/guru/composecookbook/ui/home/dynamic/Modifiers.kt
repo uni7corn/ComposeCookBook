@@ -14,6 +14,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
@@ -28,6 +29,7 @@ import com.guru.composecookbook.theme.green500
 import com.guru.composecookbook.theme.teal200
 import com.guru.composecookbook.theme.typography
 
+@ExperimentalComposeUiApi
 @Composable
 fun HowToModifiers() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
@@ -42,15 +44,19 @@ fun HowToModifiers() {
         DemoText("Modifier.fillMaxWidth")
         DemoElementButton(modifier = Modifier.fillMaxWidth())
         DemoText("Modifier.fillMaxWidth.padding(12)")
-        DemoElementButton(modifier = Modifier
-            .fillMaxWidth()
-            .padding(12.dp))
+        DemoElementButton(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp)
+        )
         DemoText("Modifier.size(100dp)")
         DemoElementButton(modifier = Modifier.size(100.dp))
         DemoText("Modifier.height(50).width(200)")
-        DemoElementButton(modifier = Modifier
-            .height(50.dp)
-            .width(200.dp))
+        DemoElementButton(
+            modifier = Modifier
+                .height(50.dp)
+                .width(200.dp)
+        )
 
         DemoText("Modifier.clip(CircleShare)")
         DemoElementButton(modifier = Modifier.clip(CircleShape))
@@ -166,6 +172,7 @@ fun DemoText(text: String) {
     )
 }
 
+@ExperimentalComposeUiApi
 @Preview
 @Composable
 fun PreviewHowToModifiers() {

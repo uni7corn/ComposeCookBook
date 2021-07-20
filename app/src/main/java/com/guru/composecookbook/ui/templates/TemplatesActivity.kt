@@ -6,19 +6,23 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
+import com.guru.composecookbook.charts.Charts
+import com.guru.composecookbook.comingsoon.ComingSoon
+import com.guru.composecookbook.login.LoginOnboarding
+import com.guru.composecookbook.onboarding.OnBoardingScreen
+import com.guru.composecookbook.paymentcard.AddPaymentScreen
+import com.guru.composecookbook.profile.ProfileScreen
 import com.guru.composecookbook.theme.ComposeCookBookTheme
-import com.guru.composecookbook.ui.templates.logins.LoginOnboarding
-import com.guru.composecookbook.ui.templates.onboardings.OnBoardingScreen1
-import com.guru.composecookbook.ui.templates.profile.ProfileScreen
-import com.guru.composecookbook.ui.utils.ComingSoon
 
 class TemplatesActivity : ComponentActivity() {
 
     private val templateType: String by lazy { intent.getStringExtra(TYPE) ?: "Profiles" }
     private val darkTheme: Boolean by lazy { intent.getBooleanExtra(DARK_THEME, true) }
 
+    @ExperimentalAnimationApi
     @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,14 +46,16 @@ class TemplatesActivity : ComponentActivity() {
     }
 }
 
+@ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @Composable
 fun TemplateApp(templateType: String) {
     when (templateType) {
         "Profiles" -> ProfileScreen()
         "Login" -> LoginOnboarding()
-        "On-boarding" -> OnBoardingScreen1 { }
+        "On-boarding" -> OnBoardingScreen { }
         "Charts" -> Charts()
+        "Adding Payment Card" -> AddPaymentScreen()
         else -> ComingSoon()
     }
 }

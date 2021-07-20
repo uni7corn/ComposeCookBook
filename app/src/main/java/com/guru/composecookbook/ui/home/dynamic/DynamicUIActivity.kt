@@ -9,13 +9,15 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.guru.composecookbook.carousel.CarouselLayout
 import com.guru.composecookbook.theme.ComposeCookBookTheme
 import com.guru.composecookbook.ui.home.androidviews.AndroidViews
-import com.guru.composecookbook.ui.home.carousel.CarouselLayout
 import com.guru.composecookbook.ui.home.constraintlayout.ConstraintLayoutDemos
 import com.guru.composecookbook.ui.home.dialogs.BottomSheetLayouts
+import com.guru.composecookbook.ui.home.motionlayout.MotionLayoutDemo
 import com.guru.composecookbook.ui.home.pullrefreshdemos.PullRefreshList
 import com.guru.composecookbook.ui.home.tabslayout.TabLayout
 import com.guru.composecookbook.ui.learnwidgets.Layouts
@@ -31,6 +33,7 @@ class DynamicUIActivity : ComponentActivity() {
         intent?.getBooleanExtra(DARK_THEME, false) ?: false
     }
 
+    @ExperimentalComposeUiApi
     @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +58,7 @@ class DynamicUIActivity : ComponentActivity() {
 }
 
 
+@ExperimentalComposeUiApi
 @ExperimentalMaterialApi
 @Composable
 fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
@@ -98,11 +102,15 @@ fun DynamicUiWrapper(uiType: String, onback: () -> Unit) {
                 DynamicUiType.PULLRERESH.name -> {
                     PullRefreshList(onPullRefresh = {})
                 }
+                DynamicUiType.MOTIONLAYOUT.name -> {
+                    MotionLayoutDemo()
+                }
             }
         }
     )
 }
 
+@ExperimentalComposeUiApi
 @ExperimentalMaterialApi
 @Preview
 @Composable

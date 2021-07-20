@@ -1,3 +1,5 @@
+package com.guru.composecookbook.ui.animation
+
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,15 +13,11 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.guru.composecookbook.ui.animation.AnimatableSuspendedAnimations
-import com.guru.composecookbook.ui.animation.AnimationsForStates
-import com.guru.composecookbook.ui.animation.AnimationsWithVisibilityApi
-import com.guru.composecookbook.ui.animation.TransitionAnimationsWithMultipleStates
-import com.guru.composecookbook.ui.templates.components.ColorPicker
+import com.guru.composecookbook.colorpicker.ColorPicker
 import com.guru.composecookbook.ui.utils.RotateIcon
+import com.guru.composecookbook.ui.utils.TestTags
 import com.guru.composecookbook.ui.utils.TitleText
 
 enum class MyAnimationState {
@@ -30,7 +28,7 @@ enum class MyAnimationState {
 fun AnimationScreen() {
     var animateIcon by remember { mutableStateOf(false) }
     Scaffold(
-        modifier = Modifier.semantics { testTag = "Animation Screen" },
+        modifier = Modifier.testTag(TestTags.ANIM_SCREEN_ROOT),
         topBar = {
             TopAppBar(
                 title = { Text(text = "Animations") },
